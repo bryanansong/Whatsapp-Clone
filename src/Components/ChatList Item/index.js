@@ -1,17 +1,17 @@
 import { Text, View, Image, StyleSheet } from 'react-native';
 
-const ChatListItem = () => {
+const ChatListItem = ({ chat }) => {
     return (
         <View style={styles.container}>
-            <Image source={{uri: 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/lukas.jpeg'}} style={styles.image}/>
+            <Image source={{uri: chat.user.image}} style={styles.image}/>
             <View style={styles.content}>
                 <View style={styles.row}>
                     <Text numberOfLines={1} style={styles.name}>
-                        Lukas
+                        {chat.user.name}
                     </Text>
-                    <Text style={styles.subTitle}>07:30</Text>
+                    <Text style={styles.subTitle}>{chat.lastMessage.createdAt}</Text>
                 </View>
-                <Text numberOfLines={2} style={styles.subTitle}>Last Message</Text>
+                <Text numberOfLines={2} style={styles.subTitle}>{chat.lastMessage.text}</Text>
             </View>
         </View>
     )
@@ -24,12 +24,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         marginHorizontal: 10,
         marginVertical: 5,
-        // backgroundColor: 'purple',
 
         height: 70
     },
     image: {
-        flex: 1,
         width: 60,
         height: 60,
         borderRadius: 30,
@@ -39,8 +37,6 @@ const styles = StyleSheet.create({
         flex: 6,
         borderBottomWidth: StyleSheet.hairlineWidth,
         borderBottomColor: 'lightgrey'
-        // backgroundColor: 'red',
-        // flexDirection: 'row'
     },
     row: {
         flexDirection: 'row',
