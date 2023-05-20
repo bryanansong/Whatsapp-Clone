@@ -1,9 +1,14 @@
 import { Text, View, StyleSheet, Image, Platform, Pressable } from 'react-native';
 import qrcode from '../../assets/images/qrcode.png';
 
+// For navigating to next screen
+import { useNavigation } from '@react-navigation/native';
+
 // Make the View Chats button pressable and perform an action
 
 const HomeScreen = () => {
+    const navigation = useNavigation();
+
     return (
         <View style={styles.container}>
             <View style={styles.upperInfo}>
@@ -11,7 +16,7 @@ const HomeScreen = () => {
                 <Text style={styles.subText}>Scan the QR code below to start a chat</Text>
             </View>
             <View style={styles.bottomInfo}>
-                <Pressable style={styles.button}><Text style={styles.buttonText}>View chats</Text></Pressable>
+                <Pressable onPress={() => navigation.navigate('Home')} style={styles.button}><Text style={styles.buttonText}>View chats</Text></Pressable>
                 <View style={styles.imageContainer} >
                     <Image source={qrcode} style={styles.image}/>
                 </View>
@@ -26,6 +31,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F8B4D3',
         paddingTop: 50,
         flex: 1,
+        borderTopLeftRadius: 36,
+        borderTopRightRadius: 36,
     },
     upperInfo: {
         flex: 1,
