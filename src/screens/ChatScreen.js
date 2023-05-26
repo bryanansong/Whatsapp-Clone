@@ -1,5 +1,4 @@
 import { View, Text, ImageBackground, StyleSheet, FlatList, KeyboardAvoidingView } from "react-native";
-import kiwihug from '../../assets/images/kiwihug.jpg';
 import BG from '../../assets/images/BG.png';
 
 import Message from "../Components/Message";

@@ -11,7 +11,7 @@ const Message = ({message}) => {
 
     return (
         <View style={[styles.container, {
-            backgroundColor: isMyMessage() ? '#F8B4D3' : '#D9D9D9',
+            backgroundColor: isMyMessage() ? '#DCF8C5' : 'white',
             alignSelf: isMyMessage() ? 'flex-end' : 'flex-start',
         }]}>
             <Text>{message.text}</Text>
