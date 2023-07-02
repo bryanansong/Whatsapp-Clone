@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     content: {
-        
+        flex: 1,
     },
     subTitle: {
         color: 'gray'
