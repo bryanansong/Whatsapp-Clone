@@ -5,7 +5,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { API, graphqlOperation, Auth } from 'aws-amplify';
 import { createMessages, updateChatRoom } from '../../graphql/mutations';
 
-const InputBox = ({ chatroom }) => {
+const InputBox = ({ chatRoom }) => {
     
     const [text, setText] = useState('')
 
@@ -15,7 +15,7 @@ const InputBox = ({ chatroom }) => {
         const authUser = await Auth.currentAuthenticatedUser()
 
         const newMessage = {
-            chatroomID: chatroom.id, text, userID: authUser.attributes.sub
+            chatroomID: chatRoom.id, text, userID: authUser.attributes.sub
         }
 
         const newMessageData = await API.graphql(graphqlOperation(createMessages, { input: newMessage }))
@@ -23,7 +23,7 @@ const InputBox = ({ chatroom }) => {
         setText('');
 
         // Set new message as LastMessage of the chatroom
-        await API.graphql(graphqlOperation(updateChatRoom, { _version: chatroom._version, chatRoomLastMessageId: newMessageData.data.createMessages.id , id: chatroom.id }))
+        await API.graphql(graphqlOperation(updateChatRoom, { _version: chatRoom._version, chatRoomLastMessageId: newMessageData.data.createMessages.id , id: chatRoom.id }))
     };
 
     return (
